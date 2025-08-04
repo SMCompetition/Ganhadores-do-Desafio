@@ -106,31 +106,6 @@
             box-shadow: 0 6px 20px rgba(30, 64, 175, 0.5);
         }
 
-        .import-btn {
-            background: linear-gradient(45deg, #059669, #0d9488);
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 600;
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 0.9rem;
-            border: 2px solid rgba(5, 150, 105, 0.3);
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            white-space: nowrap;
-            display: inline-block;
-        }
-
-        .import-btn:hover {
-            background: linear-gradient(45deg, #047857, #0f766e);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(5, 150, 105, 0.4);
-            border-color: rgba(5, 150, 105, 0.8);
-        }
-
         /* Header Principal */
         .header {
             text-align: center;
@@ -311,219 +286,6 @@
             box-shadow: 0 4px 10px rgba(5, 150, 105, 0.4);
         }
 
-        /* Modal de Importação */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-        }
-
-        .modal.show {
-            display: flex;
-        }
-
-        .modal-content {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 2rem;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 2px solid rgba(59, 130, 246, 0.3);
-            max-width: 500px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .modal-title {
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
-            font-weight: 700;
-            background: linear-gradient(45deg, #3b82f6, #ef4444);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .close-btn {
-            background: none;
-            border: none;
-            color: #ffffff;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            touch-action: manipulation;
-        }
-
-        .close-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #ffffff;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid rgba(59, 130, 246, 0.3);
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            color: #ffffff;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-        }
-
-        .form-input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .file-upload-area {
-            border: 2px dashed rgba(59, 130, 246, 0.3);
-            border-radius: 10px;
-            padding: 2rem;
-            text-align: center;
-            margin-bottom: 1rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            touch-action: manipulation;
-        }
-
-        .file-upload-area:hover {
-            border-color: #3b82f6;
-            background: rgba(59, 130, 246, 0.1);
-        }
-
-        .file-upload-area.dragover {
-            border-color: #3b82f6;
-            background: rgba(59, 130, 246, 0.2);
-        }
-
-        .btn {
-            width: 100%;
-            padding: 1rem;
-            border: none;
-            border-radius: 10px;
-            background: linear-gradient(45deg, #1e40af, #dc2626);
-            color: #ffffff;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-bottom: 1rem;
-            touch-action: manipulation;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(30, 64, 175, 0.4);
-        }
-
-        .btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .error-message {
-            color: #ef4444;
-            text-align: center;
-            margin-top: 1rem;
-            font-weight: 600;
-        }
-
-        .success-message {
-            color: #10b981;
-            text-align: center;
-            margin-top: 1rem;
-            font-weight: 600;
-        }
-
-        .file-list {
-            margin-top: 1rem;
-        }
-
-        .file-item {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 1rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .file-name {
-            font-weight: 600;
-            word-break: break-all;
-            flex: 1;
-        }
-
-        .file-size {
-            font-size: 0.9rem;
-            opacity: 0.7;
-        }
-
-        .remove-file-btn {
-            background: #ef4444;
-            border: none;
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            touch-action: manipulation;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            margin-top: 0.5rem;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(45deg, #1e40af, #dc2626);
-            width: 0%;
-            transition: width 0.3s ease;
-        }
-
         /* Rodapé */
         .footer {
             margin-top: 4rem;
@@ -620,7 +382,7 @@
             }
 
             .header {
-                padding: 120px 1rem 40px;
+                padding: 160px 1rem 40px;
             }
 
             .container {
@@ -640,7 +402,7 @@
             }
 
             .header {
-                padding: 100px 0.5rem 30px;
+                padding: 140px 0.5rem 30px;
             }
 
             .container {
@@ -658,7 +420,6 @@
                 <li><a href="ganhadores.html" class="nav-link">Ganhadores do Desafio</a></li>
                 <li><a href="sorteio.html" class="nav-link">Sorteio</a></li>
             </ul>
-            <button class="import-btn" onclick="openImportModal()">+ Importar Vídeos</button>
         </div>
     </nav>
 
@@ -667,7 +428,7 @@
         <div class="container">
             <h1 class="main-title">SM-Competition - Desafio Biscoitos Aldeia da Serra</h1>
             <div class="logo-container">
-                <img src="sitevideosdesafio/logos/logo.gif" alt="SM-Competition Logo" class="main-logo">
+                <img src="sitevideosdesafio/logos/logo.jpg" alt="SM-Competition Logo" class="main-logo">
             </div>
         </div>
     </header>
@@ -680,35 +441,6 @@
                 <div class="loading"></div>
             </div>
         </section>
-    </div>
-
-    <!-- Modal de Importação -->
-    <div class="modal" id="importModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Importar Vídeos</h2>
-                <button class="close-btn" onclick="closeImportModal()">&times;</button>
-            </div>
-            <form id="importForm">
-                <div class="form-group">
-                    <label class="form-label">Título do Vídeo</label>
-                    <input type="text" class="form-input" id="videoTitle" placeholder="Digite o título do vídeo" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Arquivo de Vídeo</label>
-                    <div class="file-upload-area" id="fileUploadArea">
-                        <p>Clique aqui ou arraste um arquivo de vídeo</p>
-                        <input type="file" id="videoFile" accept="video/*" style="display: none;" required>
-                    </div>
-                    <div class="file-list" id="fileList"></div>
-                </div>
-                <button type="submit" class="btn" id="submitBtn">Importar Vídeo</button>
-                <div class="progress-bar" id="progressBar" style="display: none;">
-                    <div class="progress-fill" id="progressFill"></div>
-                </div>
-                <div id="message"></div>
-            </form>
-        </div>
     </div>
 
     <!-- Rodapé -->
@@ -924,123 +656,6 @@
             }
         }
 
-        // Funções do modal
-        function openImportModal() {
-            document.getElementById('importModal').classList.add('show');
-        }
-
-        function closeImportModal() {
-            document.getElementById('importModal').classList.remove('show');
-            document.getElementById('importForm').reset();
-            document.getElementById('fileList').innerHTML = '';
-            document.getElementById('message').innerHTML = '';
-            document.getElementById('progressBar').style.display = 'none';
-        }
-
-        // Upload de arquivo
-        const fileUploadArea = document.getElementById('fileUploadArea');
-        const videoFileInput = document.getElementById('videoFile');
-        const fileList = document.getElementById('fileList');
-
-        fileUploadArea.addEventListener('click', () => {
-            videoFileInput.click();
-        });
-
-        fileUploadArea.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            fileUploadArea.classList.add('dragover');
-        });
-
-        fileUploadArea.addEventListener('dragleave', () => {
-            fileUploadArea.classList.remove('dragover');
-        });
-
-        fileUploadArea.addEventListener('drop', (e) => {
-            e.preventDefault();
-            fileUploadArea.classList.remove('dragover');
-            const files = e.dataTransfer.files;
-            if (files.length > 0) {
-                videoFileInput.files = files;
-                displaySelectedFiles();
-            }
-        });
-
-        videoFileInput.addEventListener('change', displaySelectedFiles);
-
-        function displaySelectedFiles() {
-            const files = videoFileInput.files;
-            fileList.innerHTML = '';
-            
-            for (let i = 0; i < files.length; i++) {
-                const file = files[i];
-                const fileItem = document.createElement('div');
-                fileItem.className = 'file-item';
-                fileItem.innerHTML = `
-                    <span class="file-name">${file.name}</span>
-                    <span class="file-size">${(file.size / 1024 / 1024).toFixed(2)} MB</span>
-                    <button type="button" class="remove-file-btn" onclick="removeFile(${i})">Remover</button>
-                `;
-                fileList.appendChild(fileItem);
-            }
-        }
-
-        function removeFile(index) {
-            const dt = new DataTransfer();
-            const files = videoFileInput.files;
-            
-            for (let i = 0; i < files.length; i++) {
-                if (i !== index) {
-                    dt.items.add(files[i]);
-                }
-            }
-            
-            videoFileInput.files = dt.files;
-            displaySelectedFiles();
-        }
-
-        // Submissão do formulário
-        document.getElementById('importForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const title = document.getElementById('videoTitle').value;
-            const file = videoFileInput.files[0];
-            const messageDiv = document.getElementById('message');
-            const progressBar = document.getElementById('progressBar');
-            const progressFill = document.getElementById('progressFill');
-            const submitBtn = document.getElementById('submitBtn');
-            
-            if (!file) {
-                messageDiv.innerHTML = '<div class="error-message">Por favor, selecione um arquivo de vídeo.</div>';
-                return;
-            }
-            
-            // Simular upload
-            submitBtn.disabled = true;
-            progressBar.style.display = 'block';
-            messageDiv.innerHTML = '';
-            
-            let progress = 0;
-            const interval = setInterval(() => {
-                progress += Math.random() * 15;
-                if (progress >= 100) {
-                    progress = 100;
-                    clearInterval(interval);
-                    
-                    setTimeout(() => {
-                        messageDiv.innerHTML = '<div class="success-message">Vídeo importado com sucesso!</div>';
-                        submitBtn.disabled = false;
-                        progressBar.style.display = 'none';
-                        
-                        setTimeout(() => {
-                            closeImportModal();
-                            loadVideos(); // Recarregar vídeos
-                        }, 2000);
-                    }, 500);
-                }
-                progressFill.style.width = progress + '%';
-            }, 200);
-        });
-
         // Carregar vídeos quando a página carregar
         document.addEventListener('DOMContentLoaded', loadVideos);
 
@@ -1056,13 +671,6 @@
                     });
                 }
             });
-        });
-
-        // Fechar modal ao clicar fora
-        document.getElementById('importModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeImportModal();
-            }
         });
 
         // Adicionar efeito parallax suave no scroll
