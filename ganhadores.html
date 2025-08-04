@@ -18,18 +18,21 @@
             color: #ffffff;
             line-height: 1.6;
             min-height: 100vh;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
         }
 
-        /* Menu de Navegação */
+        /* Menu de Navegação - Corrigido */
         .navbar {
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             padding: 1rem 0;
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
             border-bottom: 2px solid rgba(220, 38, 127, 0.3);
         }
 
@@ -40,6 +43,8 @@
             justify-content: center;
             align-items: center;
             padding: 0 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .nav-menu {
@@ -48,45 +53,81 @@
             gap: 1rem;
             flex-wrap: wrap;
             justify-content: center;
+            align-items: center;
         }
 
         .nav-link {
             color: #ffffff;
             text-decoration: none;
             font-weight: 600;
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            transition: all 0.3s ease;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
             font-size: 0.9rem;
             text-align: center;
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            white-space: nowrap;
+            display: inline-block;
+            min-width: fit-content;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #1e40af, #dc2626);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-link:hover::before {
+            left: 0;
         }
 
         .nav-link:hover {
-            background: linear-gradient(45deg, #1e40af, #dc2626);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(30, 64, 175, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4);
+            border-color: rgba(59, 130, 246, 0.8);
+            color: #ffffff;
         }
 
         .nav-link.active {
             background: linear-gradient(45deg, #1e40af, #dc2626);
-        }
-
-        /* Menu Mobile - Removido */
-        .mobile-menu-toggle {
-            display: none;
+            border-color: rgba(59, 130, 246, 0.8);
+            box-shadow: 0 6px 20px rgba(30, 64, 175, 0.5);
         }
 
         /* Header Principal */
         .header {
             text-align: center;
-            padding: 120px 2rem 60px;
+            padding: 140px 2rem 60px;
             background: linear-gradient(135deg, rgba(30, 64, 175, 0.1) 0%, rgba(220, 38, 38, 0.1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23ffffff" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
         }
 
         .main-title {
-            font-size: 3.5rem;
+            font-size: clamp(2rem, 5vw, 4rem);
             font-weight: 800;
             margin-bottom: 2rem;
             background: linear-gradient(45deg, #3b82f6, #ef4444);
@@ -95,12 +136,16 @@
             background-clip: text;
             text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             line-height: 1.2;
+            position: relative;
+            z-index: 1;
         }
 
         .subtitle {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.3rem);
             color: rgba(255, 255, 255, 0.8);
             margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         /* Container Principal */
@@ -129,11 +174,13 @@
             border-radius: 25px;
             padding: 2rem;
             backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border: 2px solid rgba(59, 130, 246, 0.3);
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
-            width: 320px;
+            width: 100%;
+            max-width: 350px;
             flex-shrink: 0;
         }
 
@@ -190,11 +237,57 @@
         .winner-title {
             text-align: center;
             margin-top: 1.5rem;
-            font-size: 1.3rem;
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
             font-weight: 700;
             color: #3b82f6;
             position: relative;
             z-index: 2;
+        }
+
+        .download-controls {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            position: relative;
+            z-index: 2;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            background: linear-gradient(45deg, #059669, #0d9488);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.8rem 1.5rem;
+            border-radius: 15px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+            touch-action: manipulation;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-btn::before {
+            content: '⬇️';
+            font-size: 1rem;
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(45deg, #047857, #0f766e);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(5, 150, 105, 0.4);
+        }
+
+        .download-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(5, 150, 105, 0.4);
         }
 
         /* Rodapé */
@@ -209,6 +302,7 @@
         .autozapp-text {
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border-radius: 15px;
             padding: 1.5rem;
             margin-bottom: 2rem;
@@ -220,7 +314,7 @@
         }
 
         .autozapp-text p {
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
             color: #ffffff;
             margin-bottom: 1rem;
             line-height: 1.6;
@@ -231,13 +325,14 @@
             display: inline-block;
             color: #ffffff;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
             font-weight: 600;
             padding: 0.6rem 1.5rem;
             border: 2px solid #3b82f6;
             border-radius: 20px;
             transition: all 0.3s ease;
             background: linear-gradient(45deg, rgba(30, 64, 175, 0.2), rgba(220, 38, 38, 0.2));
+            touch-action: manipulation;
         }
 
         .autozapp-link:hover {
@@ -248,9 +343,10 @@
         }
 
         .footer-banner {
-            max-width: 1500px;
+            max-width: min(1500px, 95vw);
             width: 100%;
-            height: 250px;
+            height: auto;
+            min-height: 150px;
             object-fit: cover;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -273,23 +369,56 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Responsividade */
+        /* Responsividade Aprimorada */
+        
+        /* Tablets em modo paisagem e desktops pequenos */
+        @media (max-width: 1024px) {
+            .nav-container {
+                padding: 0 1.5rem;
+            }
+            
+            .container {
+                padding: 0 1.5rem;
+            }
+            
+            .winners-grid {
+                gap: 1.5rem;
+            }
+
+            .winner-card {
+                max-width: 320px;
+            }
+        }
+
+        /* Tablets */
         @media (max-width: 768px) {
             .nav-container {
                 padding: 0 1rem;
+                flex-direction: column;
+                gap: 1rem;
             }
 
             .nav-menu {
-                gap: 0.5rem;
+                gap: 0.8rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
             }
 
             .nav-link {
                 font-size: 0.8rem;
-                padding: 0.3rem 0.8rem;
+                padding: 0.6rem 1.2rem;
+                flex: 1;
+                min-width: 120px;
+                text-align: center;
             }
 
-            .main-title {
-                font-size: 2.5rem;
+            .header {
+                padding: 120px 1rem 40px;
+            }
+
+            .container {
+                padding: 0 1rem;
             }
 
             .winners-grid {
@@ -300,11 +429,13 @@
 
             .winner-card {
                 width: 100%;
-                max-width: 350px;
+                max-width: 400px;
+                padding: 1.5rem;
             }
 
             .footer-banner {
-                height: 150px;
+                height: auto;
+                min-height: 120px;
             }
 
             .autozapp-text {
@@ -325,26 +456,45 @@
             }
         }
 
+        /* Smartphones */
         @media (max-width: 480px) {
-            .nav-link {
-                font-size: 0.7rem;
-                padding: 0.25rem 0.6rem;
+            .navbar {
+                padding: 0.8rem 0;
             }
 
-            .main-title {
-                font-size: 2rem;
+            .nav-container {
+                padding: 0 0.5rem;
+                gap: 0.8rem;
+            }
+
+            .nav-link {
+                font-size: 0.7rem;
+                padding: 0.5rem 1rem;
+                min-width: 100px;
             }
 
             .header {
-                padding: 100px 1rem 40px;
+                padding: 100px 0.5rem 30px;
             }
 
             .container {
-                padding: 0 1rem;
+                padding: 0 0.5rem;
             }
 
             .winner-card {
-                padding: 1.5rem;
+                padding: 1.2rem;
+                max-width: none;
+            }
+
+            .winner-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .download-btn {
+                font-size: 0.8rem;
+                padding: 0.6rem 1.2rem;
             }
 
             .autozapp-text {
@@ -357,6 +507,69 @@
                 padding: 0.4rem 1rem;
             }
         }
+
+        /* Smartphones muito pequenos */
+        @media (max-width: 320px) {
+            .nav-link {
+                font-size: 0.65rem;
+                padding: 0.4rem 0.8rem;
+                min-width: 80px;
+            }
+
+            .main-title {
+                font-size: 1.8rem;
+            }
+
+            .winner-card {
+                padding: 1rem;
+            }
+
+            .winner-number {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+
+            .download-btn {
+                font-size: 0.7rem;
+                padding: 0.5rem 1rem;
+            }
+        }
+
+        /* Melhorias para touch devices */
+        @media (hover: none) and (pointer: coarse) {
+            .nav-link:hover,
+            .download-btn:hover,
+            .autozapp-link:hover {
+                transform: none;
+            }
+
+            .nav-link:active,
+            .download-btn:active,
+            .autozapp-link:active {
+                transform: scale(0.95);
+            }
+
+            .winner-card:hover {
+                transform: none;
+            }
+        }
+
+        /* Melhorias de acessibilidade */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: linear-gradient(135deg, #0a0e13 0%, #151b26 50%, #080b0f 100%);
+            }
+        }
     </style>
 </head>
 <body>
@@ -366,26 +579,28 @@
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html" class="nav-link">Vídeos</a></li>
                 <li><a href="ganhadores.html" class="nav-link active">Ganhadores do Desafio</a></li>
-                <li><a href="sorteio.html" class="nav-link">Sorteio do Desafio SM-Competition - Biscoitos Aldeia da Serra</a></li>
+                <li><a href="sorteio.html" class="nav-link">Sorteio</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Header Principal -->
     <header class="header">
-        <h1 class="main-title">GANHADORES DO DESAFIO</h1>
-        <p class="subtitle">Os campeões do desafio SM-Competition - Biscoitos Aldeia da Serra</p>
+        <div class="container">
+            <h1 class="main-title">🏆 Ganhadores do Desafio 🏆</h1>
+            <p class="subtitle">Conheça os vencedores do desafio SM-Competition - Biscoitos Aldeia da Serra!</p>
+        </div>
     </header>
 
-    <!-- Container Principal -->
-    <div class="container">
-        <!-- Seção de Vídeos dos Ganhadores -->
-        <section class="winners-section">
+    <!-- Seção dos Ganhadores -->
+    <section class="winners-section">
+        <div class="container">
             <div class="winners-grid" id="winnersGrid">
+                <!-- Os vídeos dos ganhadores serão carregados aqui via JavaScript -->
                 <div class="loading"></div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
     <!-- Rodapé -->
     <footer class="footer">
@@ -399,6 +614,152 @@
     </footer>
 
     <script>
+        // Função robusta para baixar vídeo - VERSÃO CORRIGIDA
+        function downloadVideo(videoSrc, filename) {
+            // Obter referência do botão que foi clicado
+            const button = event.target;
+            const originalText = button.innerHTML;
+            
+            // Mostrar indicador de carregamento
+            button.innerHTML = '⏳ Baixando...';
+            button.disabled = true;
+            
+            // Função para restaurar o botão
+            function restoreButton(text = originalText, delay = 0) {
+                setTimeout(() => {
+                    button.innerHTML = text;
+                    button.disabled = false;
+                }, delay);
+            }
+            
+            // Função para mostrar sucesso
+            function showSuccess() {
+                button.innerHTML = '✅ Baixado!';
+                button.disabled = false;
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                }, 2000);
+            }
+            
+            // Função para mostrar erro
+            function showError() {
+                button.innerHTML = '❌ Erro';
+                button.disabled = false;
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                }, 2000);
+            }
+            
+            // Método 1: Tentar download via fetch + blob (mais confiável)
+            function downloadViaBlob() {
+                return fetch(videoSrc)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                        }
+                        return response.blob();
+                    })
+                    .then(blob => {
+                        // Criar URL do blob
+                        const blobUrl = URL.createObjectURL(blob);
+                        
+                        // Criar link de download
+                        const link = document.createElement('a');
+                        link.href = blobUrl;
+                        link.download = filename || 'video.mp4';
+                        link.style.display = 'none';
+                        
+                        // Adicionar ao DOM, clicar e remover
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        
+                        // Limpar URL do blob após um tempo
+                        setTimeout(() => {
+                            URL.revokeObjectURL(blobUrl);
+                        }, 1000);
+                        
+                        showSuccess();
+                        return true;
+                    })
+                    .catch(error => {
+                        console.warn('Método blob falhou:', error);
+                        return false;
+                    });
+            }
+            
+            // Método 2: Download direto (fallback)
+            function downloadDirect() {
+                try {
+                    const link = document.createElement('a');
+                    link.href = videoSrc;
+                    link.download = filename || 'video.mp4';
+                    link.style.display = 'none';
+                    
+                    // Atributos para forçar download
+                    link.setAttribute('download', filename || 'video.mp4');
+                    link.setAttribute('target', '_blank');
+                    link.setAttribute('rel', 'noopener noreferrer');
+                    
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    showSuccess();
+                    return true;
+                } catch (error) {
+                    console.warn('Método direto falhou:', error);
+                    return false;
+                }
+            }
+            
+            // Método 3: Abrir em nova aba (último recurso)
+            function openInNewTab() {
+                try {
+                    const newWindow = window.open(videoSrc, '_blank');
+                    if (newWindow) {
+                        button.innerHTML = '🔗 Aberto em nova aba';
+                        button.disabled = false;
+                        setTimeout(() => {
+                            button.innerHTML = originalText;
+                        }, 3000);
+                        return true;
+                    }
+                    return false;
+                } catch (error) {
+                    console.warn('Método nova aba falhou:', error);
+                    return false;
+                }
+            }
+            
+            // Executar métodos em sequência
+            async function executeDownload() {
+                try {
+                    // Verificar se é um arquivo local (protocolo file://)
+                    if (window.location.protocol === 'file:' || videoSrc.startsWith('file://')) {
+                        // Para arquivos locais, usar método direto primeiro
+                        if (downloadDirect()) return;
+                        if (openInNewTab()) return;
+                    } else {
+                        // Para arquivos remotos, tentar blob primeiro
+                        if (await downloadViaBlob()) return;
+                        if (downloadDirect()) return;
+                        if (openInNewTab()) return;
+                    }
+                    
+                    // Se todos os métodos falharam
+                    throw new Error('Todos os métodos de download falharam');
+                    
+                } catch (error) {
+                    console.error('Erro no download:', error);
+                    showError();
+                }
+            }
+            
+            // Executar o download
+            executeDownload();
+        }
+
         // Função para carregar vídeos dos ganhadores
         async function loadWinnerVideos() {
             const winnersGrid = document.getElementById('winnersGrid');
@@ -423,6 +784,11 @@
                             Seu navegador não suporta o elemento de vídeo.
                         </video>
                         <h3 class="winner-title">${winner.title}</h3>
+                        <div class="download-controls">
+                            <button class="download-btn" onclick="downloadVideo('sitevideosdesafio/ganhadores/${winner.file}', '${winner.file}')">
+                                Baixar Vídeo
+                            </button>
+                        </div>
                     `;
                     winnersGrid.appendChild(winnerCard);
                 });
